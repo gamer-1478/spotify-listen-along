@@ -1,0 +1,3 @@
+#gitnore for node js
+/node_modules
+.env
