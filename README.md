@@ -24,3 +24,6 @@ If you want to run the project, create a Spotify app on [the Spotify Developer s
    ```
 
 1. Navigate to `http://localhost:8888/`.
+
+# spotify-listen-along
+Free Spotify listen along creation lmao, seems very illegal.
