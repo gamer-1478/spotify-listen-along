@@ -1,13 +1,14 @@
 var express = require('express'),
-session = require('cookie-session'),
-passport = require('passport'),
-SpotifyStrategy = require('passport-spotify').Strategy,
-consolidate = require('consolidate');
+  session = require('cookie-session'),
+  passport = require('passport'),
+  SpotifyStrategy = require('passport-spotify').Strategy,
+  consolidate = require('consolidate');
+  authRouter = require('./routes/authRoute');
 
 require('dotenv').config();
 
 var port = 8888;
-var authCallbackPath = '/auth/spotify/callback';
+var authCallbackPath = process.env.AUTH_CALLBACK_PATH;
 
 // Passport session setup.
 //   To support persistent login sessions, Passport needs to be able to
@@ -84,9 +85,9 @@ app.use(express.static(__dirname + '/public'));
 
 app.engine('html', consolidate.nunjucks);
 
-app.get('/', function (req, res) {
-  console.log(req.user.accessToken || "error occured")
+app.use('/', authRouter);
 
+app.get('/', function (req, res) {
   res.render('index.html', { user: req.user });
 });
 
@@ -96,32 +97,6 @@ app.get('/account', ensureAuthenticated, function (req, res) {
 
 app.get('/login', function (req, res) {
   res.render('login.html', { user: req.user });
-});
-
-// GET /auth/spotify
-//   Use passport.authenticate() as route middleware to authenticate the
-//   request. The first step in spotify authentication will involve redirecting
-//   the user to spotify.com. After authorization, spotify will redirect the user
-//   back to this application at /auth/spotify/callback
-app.get('/auth/spotify', passport.authenticate('spotify', {
-  scope: ['user-read-email', 'user-read-private', "user-read-currently-playing", "user-read-playback-position", "user-modify-playback-state"]
-})
-);
-
-// GET /auth/spotify/callback
-//   Use passport.authenticate() as route middleware to authenticate the
-//   request. If authentication fails, the user will be redirected back to the
-//   login page. Otherwise, the primary route function function will be called,
-//   which, in this example, will redirect the user to the home page.
-app.get(authCallbackPath, passport.authenticate('spotify', { failureRedirect: '/login' }),
-  function (req, res) {
-    res.redirect('/');
-  }
-);
-
-app.get('/logout', function (req, res) {
-  req.logout();
-  res.redirect('/');
 });
 
 app.listen(port, function () {
