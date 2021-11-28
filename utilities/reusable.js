@@ -10,8 +10,17 @@ function ensureAuthenticated(req, res, next) {
     res.redirect('/login');
 }
 
+function getAuthCallBackUrl() {
+    if (process.env.NODE_ENV === 'production') {
+        return 'https://' + process.env.HOST + authCallbackPath;
+    } else {
+        return 'http://localhost:' + port + authCallbackPath;
+    }
+}
+
 const reusable = {
     ensureAuthenticated,
+    getAuthCallBackUrl
 }
 
 module.exports = reusable

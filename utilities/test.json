@@ -1,0 +1,104 @@
+{
+    "timestamp": 1638079724130,
+    "context": {
+        "external_urls": {
+            "spotify": "https://open.spotify.com/playlist/2vTuNrpPJiiqBgQvClztw0"
+        },
+        "href": "https://api.spotify.com/v1/playlists/2vTuNrpPJiiqBgQvClztw0",
+        "type": "playlist",
+        "uri": "spotify:playlist:2vTuNrpPJiiqBgQvClztw0"
+    },
+    "progress_ms": 63404,
+    "item": {
+        "album": {
+            "album_type": "album",
+            "artists": [
+                {
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/artist/6ltzsmQQbmdoHHbLZ4ZN25"
+                    },
+                    "href": "https://api.spotify.com/v1/artists/6ltzsmQQbmdoHHbLZ4ZN25",
+                    "id": "6ltzsmQQbmdoHHbLZ4ZN25",
+                    "name": "Lord Huron",
+                    "type": "artist",
+                    "uri": "spotify:artist:6ltzsmQQbmdoHHbLZ4ZN25"
+                }
+            ],
+            "external_urls": {
+                "spotify": "https://open.spotify.com/album/1SUC3BzNqa5Kna2bZAsAK8"
+            },
+            "href": "https://api.spotify.com/v1/albums/1SUC3BzNqa5Kna2bZAsAK8",
+            "id": "1SUC3BzNqa5Kna2bZAsAK8",
+            "images": [
+                {
+                    "height": 640,
+                    "url": "https://i.scdn.co/image/ab67616d0000b273ee6611c95f868e465c98a0b2",
+                    "width": 640
+                },
+                {
+                    "height": 300,
+                    "url": "https://i.scdn.co/image/ab67616d00001e02ee6611c95f868e465c98a0b2",
+                    "width": 300
+                },
+                {
+                    "height": 64,
+                    "url": "https://i.scdn.co/image/ab67616d00004851ee6611c95f868e465c98a0b2",
+                    "width": 64
+                }
+            ],
+            "name": "Strange Trails",
+            "release_date": "2015-04-06",
+            "release_date_precision": "day",
+            "total_tracks": 14,
+            "type": "album",
+            "uri": "spotify:album:1SUC3BzNqa5Kna2bZAsAK8"
+        },
+        "artists": [
+            {
+                "external_urls": {
+                    "spotify": "https://open.spotify.com/artist/6ltzsmQQbmdoHHbLZ4ZN25"
+                },
+                "href": "https://api.spotify.com/v1/artists/6ltzsmQQbmdoHHbLZ4ZN25",
+                "id": "6ltzsmQQbmdoHHbLZ4ZN25",
+                "name": "Lord Huron",
+                "type": "artist",
+                "uri": "spotify:artist:6ltzsmQQbmdoHHbLZ4ZN25"
+            }
+        ],
+        "disc_number": 1,
+        "duration_ms": 208211,
+        "explicit": false,
+        "external_ids": {
+            "isrc": "US53Q1200103"
+        },
+        "external_urls": {
+            "spotify": "https://open.spotify.com/track/3hRV0jL3vUpRrcy398teAU"
+        },
+        "href": "https://api.spotify.com/v1/tracks/3hRV0jL3vUpRrcy398teAU",
+        "id": "3hRV0jL3vUpRrcy398teAU",
+        "is_local": false,
+        "is_playable": true,
+        "linked_from": {
+            "external_urls": {
+                "spotify": "https://open.spotify.com/track/6mORGLOz79w6VsCRLWYYuK"
+            },
+            "href": "https://api.spotify.com/v1/tracks/6mORGLOz79w6VsCRLWYYuK",
+            "id": "6mORGLOz79w6VsCRLWYYuK",
+            "type": "track",
+            "uri": "spotify:track:6mORGLOz79w6VsCRLWYYuK"
+        },
+        "name": "The Night We Met",
+        "popularity": 82,
+        "preview_url": "https://p.scdn.co/mp3-preview/e6d567cf10c6a4c82d702db34e98d4821fb2676b?cid=774b29d4f13844c495f206cafdad9c86",
+        "track_number": 14,
+        "type": "track",
+        "uri": "spotify:track:3hRV0jL3vUpRrcy398teAU"
+    },
+    "currently_playing_type": "track",
+    "actions": {
+        "disallows": {
+            "resuming": true
+        }
+    },
+    "is_playing": true
+}

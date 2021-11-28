@@ -2,14 +2,15 @@ var express = require('express'),
   session = require('cookie-session'),
   passport = require('passport'),
   SpotifyStrategy = require('passport-spotify').Strategy;
+
 const
   authRouter = require('./routes/authRoute'),
-  renderRouter = require('./routes/renderRoute');
+  renderRouter = require('./routes/renderRoute'),
+  { getAuthCallBackUrl } = require('./utilities/reusable');
 
 require('dotenv').config();
 
 var port = process.env.PORT || 8888;
-var authCallbackPath = process.env.AUTH_CALLBACK_PATH;
 
 // Passport session setup.
 //   To support persistent login sessions, Passport needs to be able to
@@ -26,13 +27,6 @@ passport.deserializeUser(function (obj, done) {
   done(null, obj);
 });
 
-function getAuthCallBackUrl() {
-  if (process.env.NODE_ENV === 'production') {
-    return 'https://' + process.env.HOST + authCallbackPath;
-  } else {
-    return 'http://localhost:' + port + authCallbackPath;
-  }
-}
 // Use the SpotifyStrategy within Passport.
 //   Strategies in Passport require a `verify` function, which accept
 //   credentials (in this case, an accessToken, refreshToken, expires_in

@@ -1,0 +1,24 @@
+{
+    "timestamp": 1638079724130,
+    "progress_ms": 63404,
+    "item": {
+        "artists": [
+            {
+                "name": "Lord Huron"
+            }
+        ],
+        "disc_number": 1,
+        "duration_ms": 208211,
+        "explicit": false,
+        "is_local": false,
+        "is_playable": true,
+        "name": "The Night We Met",
+        "popularity": 82,
+        "preview_url": "https://p.scdn.co/mp3-preview/e6d567cf10c6a4c82d702db34e98d4821fb2676b?cid=774b29d4f13844c495f206cafdad9c86",
+        "track_number": 14,
+        "type": "track",
+        "uri": "spotify:track:3hRV0jL3vUpRrcy398teAU"
+    },
+    "currently_playing_type": "track",
+    "is_playing": true
+}
