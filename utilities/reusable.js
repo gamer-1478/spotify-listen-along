@@ -11,6 +11,8 @@ function ensureAuthenticated(req, res, next) {
 }
 
 function getAuthCallBackUrl() {
+    var port = process.env.PORT || 8888;
+    var authCallbackPath = process.env.AUTH_CALLBACK_PATH;
     if (process.env.NODE_ENV === 'production') {
         return 'https://' + process.env.HOST + authCallbackPath;
     } else {
@@ -18,9 +20,21 @@ function getAuthCallBackUrl() {
     }
 }
 
+function makeid(length) {
+    var result = '';
+    var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    var charactersLength = characters.length;
+    for (var i = 0; i < length; i++) {
+        result += characters.charAt(Math.floor(Math.random() *
+            charactersLength));
+    }
+    return result;
+}
+
 const reusable = {
     ensureAuthenticated,
-    getAuthCallBackUrl
+    getAuthCallBackUrl,
+    makeid
 }
 
 module.exports = reusable
