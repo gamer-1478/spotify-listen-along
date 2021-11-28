@@ -71,11 +71,6 @@ typings/
 # dotenv environment variables file
 .env
 
-./utilites/test.json
-./utilites/test copy.json
-./utilites/test_user.json
-./utilites/test_host.json
-
 # parcel-bundler cache (https://parceljs.org/)
 .cache
 
