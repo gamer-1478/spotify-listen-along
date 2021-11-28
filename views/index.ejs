@@ -2,10 +2,8 @@
 <% if (user){ %>
 	<h2>Hello, <%= user.username %></h2>
 	<p>Your email is <%= user.emails[0].value %></p>
-
 	<div class="listening-party-cointainer">
-		<button>Start a Listening Party</button>
-		<button>Join A Listening Party</button>
+		<button onclick="new function(){window.location.href = '/startparty'}">Start a Listening Party</button>
 	</div>
 <% } else { %>
 	<h2>Welcome! Please log in.</h2>
