@@ -8,7 +8,7 @@ const
 
 require('dotenv').config();
 
-var port = 8888;
+var port = process.env.PORT || 8888;
 var authCallbackPath = process.env.AUTH_CALLBACK_PATH;
 
 // Passport session setup.
