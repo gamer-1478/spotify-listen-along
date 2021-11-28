@@ -1,17 +1,3 @@
-const express = require("express"),
-    renderRouter = express.Router();
-
-renderRouter
-    .get('/', function (req, res) {
-        res.render('index', { user: req.user });
-    })
-    .get('/account', ensureAuthenticated, function (req, res) {
-        res.render('account', { user: req.user });
-    })
-    .get('/login', function (req, res) {
-        res.render('login', { user: req.user });
-    });
-
 // Simple route middleware to ensure user is authenticated.
 //   Use this route middleware on any resource that needs to be protected.  If
 //   the request is authenticated (typically via a persistent login session),
@@ -24,4 +10,8 @@ function ensureAuthenticated(req, res, next) {
     res.redirect('/login');
 }
 
-module.exports = renderRouter;
+const reusable = {
+    ensureAuthenticated,
+}
+
+module.exports = reusable

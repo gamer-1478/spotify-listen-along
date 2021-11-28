@@ -1,9 +1,10 @@
 var express = require('express'),
   session = require('cookie-session'),
   passport = require('passport'),
-  SpotifyStrategy = require('passport-spotify').Strategy,
-  consolidate = require('consolidate');
-  authRouter = require('./routes/authRoute');
+  SpotifyStrategy = require('passport-spotify').Strategy;
+const
+  authRouter = require('./routes/authRoute'),
+  renderRouter = require('./routes/renderRoute');
 
 require('dotenv').config();
 
@@ -62,8 +63,7 @@ passport.use(
 var app = express();
 
 // configure Express
-app.set('views', __dirname + '/views');
-app.set('view engine', 'html');
+app.set('view engine', 'ejs');
 
 app.use(
   session({
@@ -76,6 +76,7 @@ app.use(
     name: "spotify.oauth",
   })
 );
+
 // Initialize Passport!  Also use passport.session() middleware, to support
 // persistent login sessions (recommended).
 app.use(passport.initialize());
@@ -83,34 +84,9 @@ app.use(passport.session());
 
 app.use(express.static(__dirname + '/public'));
 
-app.engine('html', consolidate.nunjucks);
-
 app.use('/', authRouter);
-
-app.get('/', function (req, res) {
-  res.render('index.html', { user: req.user });
-});
-
-app.get('/account', ensureAuthenticated, function (req, res) {
-  res.render('account.html', { user: req.user });
-});
-
-app.get('/login', function (req, res) {
-  res.render('login.html', { user: req.user });
-});
+app.use('/', renderRouter);
 
 app.listen(port, function () {
   console.log('App is listening on port ' + port);
 });
-
-// Simple route middleware to ensure user is authenticated.
-//   Use this route middleware on any resource that needs to be protected.  If
-//   the request is authenticated (typically via a persistent login session),
-//   the request will proceed. Otherwise, the user will be redirected to the
-//   login page.
-function ensureAuthenticated(req, res, next) {
-  if (req.isAuthenticated()) {
-    return next();
-  }
-  res.redirect('/login');
-}
