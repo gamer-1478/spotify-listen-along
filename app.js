@@ -12,7 +12,6 @@ require('dotenv').config();
 
 var port = process.env.PORT || 8888;
 
-
 // Passport session setup.
 //   To support persistent login sessions, Passport needs to be able to
 //   serialize users into and deserialize users out of the session. Typically,

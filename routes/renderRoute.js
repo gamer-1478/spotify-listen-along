@@ -18,7 +18,7 @@ renderRouter
         createFirestoreParty(req.user, code).then((result) => {
             if (result == true) {
                 startRepeater(req.user.accessToken, code);
-                res.render('startParty', { user: req.user, code: code, host: "localhost:8888" });
+                res.render('startParty', { user: req.user, code: code, host: "spotify.aayushgarg.net" });
 
             } else {
                 res.redirect('/startParty');
