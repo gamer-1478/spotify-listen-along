@@ -7,6 +7,7 @@ function logout(req, res) {
 }
 
 async function authCallBack(req, res, next) {
+    console.log('authCallBack');
     await passport.authenticate('spotify', {
         failureRedirect: '/login'
     })(req, res, function () {

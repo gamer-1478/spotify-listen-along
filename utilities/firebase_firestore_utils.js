@@ -70,7 +70,6 @@ async function joinFirestoreParty(party_id, user_prof) {
                     members: firestore.FieldValue.arrayUnion(user_prof)
                 }).then(function () {
                     console.log("Document successfully written!");
-                    console.log(user_prof, party.host);
                     resolve(true)
                 }).catch(function (error) {
                     console.error("Error writing document: ", error);
@@ -140,12 +139,31 @@ async function deleteFirestoreParty(party_id, email) {
     });
 }
 
+async function setFirestorePartySongItem(party_id, song_item) {
+    return new Promise((resolve, reject) => {
+        db.collection("active_party").doc(party_id).update({
+            song_item: song_item
+        }).then(function () {
+            console.log("Document successfully written!");
+            resolve(true)
+        }).catch(function (error) {
+            console.error("Error writing document: ", error);
+            reject(false)
+        });
+    }).then(function (result) {
+        return result
+    }).catch(function (error) {
+        return error
+    });
+}
+
 const firestore_utils = {
     createFirestoreParty,
     getFirestoreParty,
     joinFirestoreParty,
     leaveFirestoreParty,
-    deleteFirestoreParty
+    deleteFirestoreParty,
+    setFirestorePartySongItem
 }
 
 module.exports = firestore_utils;

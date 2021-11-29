@@ -1,8 +1,8 @@
 const express = require("express"),
     renderRouter = express.Router(),
     { createFirestoreParty, deleteFirestoreParty, joinFirestoreParty } = require("../utilities/firebase_firestore_utils"),
-    { makeid } = require("../utilities/reusable");
-
+    { makeid } = require("../utilities/reusable"),
+    { startRepeater, stopRepeater } = require("../utilities/repeater_utils");
 renderRouter
     .get('/', function (req, res) {
         res.render('index', { user: req.user });
@@ -17,7 +17,9 @@ renderRouter
         var code = makeid(8).toUpperCase();
         createFirestoreParty(req.user, code).then((result) => {
             if (result == true) {
+                startRepeater(req.user.accessToken, code);
                 res.render('startParty', { user: req.user, code: code, host: "localhost:8888" });
+
             } else {
                 res.redirect('/startParty');
             }
@@ -25,6 +27,7 @@ renderRouter
     })
     .get('/stopParty/:id', ensureAuthenticated, async function (req, res) {
         var code = req.params.id.toUpperCase();
+        stopRepeater();
         deleteFirestoreParty(code, req.user.emails[0].value).then((result) => {
             if (result == true) {
                 res.redirect('/');
@@ -50,6 +53,7 @@ renderRouter
 //   the request will proceed. Otherwise, the user will be redirected to the
 //   login page.
 function ensureAuthenticated(req, res, next) {
+    console.log(req.isAuthenticated(),"authenticaed?");
     if (req.isAuthenticated()) {
         return next();
     }

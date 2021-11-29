@@ -25,7 +25,7 @@ async function setcurrentlyPlayingtime(accessToken, time) {
 }
 
 //spotify set currently playing song
-async function setcurrentlyPlaying(accessToken, uri) {
+async function setcurrentlyPlaying(accessToken, uri, time) {
     return await fetch('https://api.spotify.com/v1/me/player/play', {
         method: 'PUT',
         headers: {
@@ -33,7 +33,8 @@ async function setcurrentlyPlaying(accessToken, uri) {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            "uris": [uri]
+            "uris": [uri],
+            "position_ms": time
         })
     })
 }
