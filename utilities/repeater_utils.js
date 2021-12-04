@@ -76,8 +76,6 @@ async function startRepeater(acessToken, code) {
     });
 }
 
-
-
 function between(x, min, max) {
     return x >= min && x <= max;
 }
