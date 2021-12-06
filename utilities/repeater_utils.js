@@ -1,10 +1,10 @@
 const { getCurrentlyPlaying, setcurrentlyPlaying, setcurrentlyPlayingtime } = require('./spotify');
 const { getFirestoreParty, setFirestorePartySongItem } = require('./firebase_firestore_utils');
 //get currently playing spotify song 30 times a minute and update the database
-
+var myVar;
 
 async function startRepeater(acessToken, code) {
-    var myVar = setInterval(async function () {
+    myVar = setInterval(async function () {
         var data = await getCurrentlyPlaying(acessToken, code)
         data = await data.json();
         if (typeof data != 'undefined' && data.hasOwnProperty('is_playing') && data.hasOwnProperty('item')) {
@@ -79,7 +79,9 @@ async function startRepeater(acessToken, code) {
 function between(x, min, max) {
     return x >= min && x <= max;
 }
-
+function stopRepeater() {
+    clearInterval(myVar);
+}
 
 module.exports = {
     startRepeater,
